@@ -3,9 +3,11 @@ session_start();
 if (!$_SESSION['auth']) {
     header('Location: login.php');
     die();
-}
-else {
-?>
+} else {
+    if (!empty($_POST['comments'])) {
+        header("Location: http://gestbook/reply.php");
+    }
+    ?>
     <html>
     <head>
 
@@ -22,7 +24,7 @@ else {
                 margin-bottom: 100px;
             }
 
-            input[type=submit], input[type=reset]{
+            input[type=submit], input[type=reset] {
                 background-color: #20B2AA;
                 color: white;
                 padding: 4px 16px;
@@ -30,69 +32,58 @@ else {
                 border: 1px solid #ccc;
                 width: 100px;
             }
-            input:focus {
-                outline: 3px solid transparent;
-            }
+
             .my-button {
                 background-color: #20B2AA;
                 color: white;
-                padding: 4px 16px;
-                margin: 4px 2px;
+                padding: 2px 8px;
+                margin: 18px 10px;
                 border: 1px solid #ccc;
                 width: 100px;
                 float: right;
+                text-decoration: none;
+
             }
 
         </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     </head>
     <body>
-    <form action="" method="post">
-    <a href="logout.php"><button class="my-button">Log out</button></a>
+
+    <form method="post">
+        <a href="logout.php" class="my-button">
+            <center>Log out</center>
+        </a>
         <center>
             <h3>Guest book</h3>
             <label>
-<textarea name="comments" required placeholder="Write you comment.." rows="4" cols="50" style="resize: none;">
-
-</textarea>
+                <textarea rows="4" required cols="45" name="comments" placeholder="Write you comment.."
+                          style="resize: none;"></textarea>
             </label><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" name="submitbtn">
             <input type="reset" value="Reset"><br>
+
         </center>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </body>
     </html>
     <?php
 
-    $comments = $_POST['comments'];
-    $date = date("d-m-Y");
-
-
+    include 'commentOncomment.php';
     $db = new PDO ('mysql:dbname=registeruser;host=127.0.0.1', 'root', 'root');
-
-    $stmt1 = $db->prepare('SELECT comments, date, login FROM comment');
-    $stmt1->execute();
-    $data1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($data1 as $key => $value) {
-        echo '<br><big>' . $value['login'] . '</big>' . ' ' . '<small>' . $value['date'] . '</small>';
-        echo '<div style="border: 2px solid yellow; width: 1000px; border-radius: 10px; background: pink; word-break: break-all;
-padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px">' . $value['comments'] . '</div>';
-    }
-
     $stmt = $db->prepare('SELECT * FROM user WHERE id_user = :id_user');
     $stmt->bindParam(':id_user', $_SESSION['id_user']);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $statement = $db->prepare('INSERT INTO comment (comments, date, login)VALUE(:comments, :date, :login)');
+
+
+    $statement = $db->prepare('INSERT INTO comment (comments, date, firstname,lastname)VALUE(:comments, :date, :firstname, :lastname)');
     $statement->bindParam(':comments', $comments);
     $statement->bindParam(':date', $date);
-    $statement->bindParam(':login', $data[0]['login']);
+    $statement->bindParam(':firstname', $data[0]['firstname']);
+    $statement->bindParam(':lastname', $data[0]['lastname']);
     $statement->execute();
-    unset($_POST);
-
-
-
-
-
 }
 ?>

@@ -1,6 +1,10 @@
+<?php
+if (!empty($_POST)) {
+    header('Location: login.php');
+}
+?>
 <html>
 <head>
-<!--    <meta charset="UTF-8">-->
     <title>Register</title>
     <style>
         body {

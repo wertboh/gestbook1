@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if (isset($_SESSION['id_user'])) {
+        header("Location: http://gestbook/reply.php");
+}
 echo '
 <html>
 <head>
@@ -51,7 +53,7 @@ echo '
     </style>
 </head>
 <body>
-<form action="" method="post">
+<form  method="post">
     <center>
         <fieldset style="...">
             <legend><h3>Login</h3></legend>
@@ -91,9 +93,7 @@ if (!empty($email) && !empty($pass)) {
     }
     if (isset($_SESSION['id_user'])) {
         echo '<font size="2" color="gray" face="Arial">' .
-            'Now you can write your comment. Click <a href="reply.php">here</a>.' . '</font>';
-//        header("Location: reply.php");
-
+            'Now you can write your comment. Click <a href="reply.php">here</a> or refresh this page' . '</font>';
     }
 }
 

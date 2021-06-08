@@ -1,4 +1,7 @@
 <?php
 session_start();
 session_destroy();
-header("Location: login.php");
+$_SESSION = array();
+header("Location: http://gestbook/login.php");
+
+
