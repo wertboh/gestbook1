@@ -60,7 +60,7 @@ if (!$_SESSION['auth']) {
                 <textarea rows="4" required cols="45" name="comments" placeholder="Write you comment.."
                           style="resize: none;"></textarea>
             </label><br>
-            <input type="submit" value="Submit" name="submitbtn">
+            <input type="submit" value="Submit" name="submitbtn"  >
             <input type="reset" value="Reset"><br>
 
         </center>
@@ -69,8 +69,15 @@ if (!$_SESSION['auth']) {
     </body>
     </html>
     <?php
+    $comments = $_POST['comments'];
+    $date = date("d-m-Y, h:i:s");
+    $db = new PDO ('mysql:dbname=registeruser;host=127.0.0.1', 'root', 'root');
 
+    $stmt1 = $db->prepare('SELECT comments, date, firstname, lastname, id_comment FROM comment');
+    $stmt1->execute();
+    $data1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
     include 'commentOncomment.php';
+
     $db = new PDO ('mysql:dbname=registeruser;host=127.0.0.1', 'root', 'root');
     $stmt = $db->prepare('SELECT * FROM user WHERE id_user = :id_user');
     $stmt->bindParam(':id_user', $_SESSION['id_user']);
@@ -85,5 +92,14 @@ if (!$_SESSION['auth']) {
     $statement->bindParam(':firstname', $data[0]['firstname']);
     $statement->bindParam(':lastname', $data[0]['lastname']);
     $statement->execute();
+
+    $stmt2 = $db->prepare('INSERT INTO commentoncomment (date, firstname, lastname, idComment, replies) 
+VALUE (":date", "firstname", ":lastname", 2, ":replies")');
+//    $stmt2->bindParam(':date', $date);
+//    $stmt2->bindParam(':firstname',$data[0]['firstname']);
+//    $stmt2->bindParam(':lastname',$data[0]['lastname']);
+//    $stmt2->bindParam(':idComment',$data1[0]['id_comment']);
+//    $stmt2->bindParam(':replies',$replies);
+    $stmt2->execute();
 }
 ?>
