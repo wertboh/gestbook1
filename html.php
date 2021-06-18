@@ -5,6 +5,17 @@
             background: linear-gradient(50deg, #EECFBA, #C5DDE8);
             margin-bottom: 10px;
         }
+        .border_comment {
+            border: 2px solid yellow;
+            width: 1000px;
+            border-radius: 10px;
+            background: pink; word-break: break-all;
+            padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
+        }
+        .border_reply {
+            border: 2px solid deeppink; width: 1000px; border-radius: 10px; background: lightyellow; word-break: break-all;
+            padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
@@ -51,6 +62,7 @@
             width: 100px;
             float: right;
             text-decoration: none;
+
 
         }
     </style>
