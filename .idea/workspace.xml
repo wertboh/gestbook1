@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="850fabad-3896-4f73-bad3-d3fac211edca" name="Default Changelist" comment="yakas pizda">
+    <list default="true" id="850fabad-3896-4f73-bad3-d3fac211edca" name="Default Changelist" comment="uh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html.php" beforeDir="false" afterPath="$PROJECT_DIR$/html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Option2.php" beforeDir="false" afterPath="$PROJECT_DIR$/Option2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/reply.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,8 @@
       <workItem from="1623221887195" duration="4203000" />
       <workItem from="1623235270249" duration="16088000" />
       <workItem from="1623307326222" duration="168746000" />
-      <workItem from="1623998531556" duration="33654000" />
+      <workItem from="1623998531556" duration="33792000" />
+      <workItem from="1624257503570" duration="24093000" />
     </task>
     <task id="LOCAL-00001" summary="8 июня">
       <created>1623177433335</created>
@@ -88,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623666507173</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="uh">
+      <created>1624042429695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1624042429695</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="8 июня" />
     <MESSAGE value="yakas pizda" />
-    <option name="LAST_COMMIT_MESSAGE" value="yakas pizda" />
+    <MESSAGE value="uh" />
+    <option name="LAST_COMMIT_MESSAGE" value="uh" />
   </component>
   <component name="WindowStateProjectService">
     <state x="59" y="210" key="#SQL_Dialects" timestamp="1623937917174">
@@ -136,10 +145,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1624020260933" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1623666511119">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1624042481513">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1623666511119" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1624042481513" />
     <state x="92" y="92" width="1182" height="554" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1624011517545">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
