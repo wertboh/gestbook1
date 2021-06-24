@@ -1,7 +1,10 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Register</title>
+
+
+    <title>Login</title>
     <style>
         body {
             background: linear-gradient(45deg, #EECFBA, #C5DDE8);
@@ -11,11 +14,12 @@
             font-size: 140%;
             font-family: Verdana, Georgia, Helvetica, sans-serif;
             color: #20B2AA;
+
         }
 
         fieldset {
             border: border: 1rem solid;
-            width: 1000px;
+            width: 100px;
             background: linear-gradient(45deg, #EECFBA, #ffff80);
         }
 
@@ -26,14 +30,6 @@
             margin: 4px 2px;
             border: 1px solid #ccc;
             width: 100px;
-        }
-
-        input[type=text] {
-            border-radius: 4px;
-            padding: 12px 20px;
-            margin: 4px 0;
-            border: 1px solid #ccc;
-            width: 250px;
         }
 
         input[type=password] {
@@ -52,27 +48,26 @@
             width: 250px;
         }
     </style>
+</head>
 <body>
-<form method="post" id="register_form" action="">
+
+<form method="post" id="login_form" action="">
     <center>
-        <fieldset style="width:0px">
-            <legend><h3>Register</h3></legend>
-            <input type="text" name="login" required placeholder="Login"><br>
-            <br><input type="email" name="email" required placeholder="E-mail"><br>
-            <br><input type="password" name="pass" required placeholder="Password"><br>
-            <br><input type="text" name="firstname" required placeholder="Firstname"><br>
-            <br><input type="text" name="lastname" required placeholder="Lastname"><br>
-            <br><input type="text" name="phnumber" placeholder="Phone Number">
+        <fieldset style="...">
+            <legend><h3>Login</h3></legend>
+            <input type="email" id="email" name="email" required placeholder="E-mail"><br>
+            <input type="password" id="pass" name="pass" required placeholder="Password"><br>
             <hr>
-            <input type="submit" value="Submit">&nbsp
+            <button  type="submit" value="Submit" id="button_login" > </button>
             <input type="reset" value="Reset"><br>
-            <font size="2" color="gray" face="Arial">If you have account. Please click <a
-                        href="loginHtml.php">here</a></font>
+            <font size="2" color="gray" face="Arial">If you don`t have account.
+                Please click <a href="register.php">here</a></font>
         </fieldset>
     </center>
 </form>
-<div id="registerresult_form"></div>
-<script src="ajaxRegister"></script>
+<div id="loginresult_form"></div>
+<script src="ajaxLogin.js"></script>
 </body>
 </html>
+
 

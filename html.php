@@ -1,25 +1,12 @@
 <html>
 <head>
     <style>
-        .accordion-item {
-            background: linear-gradient(50deg, #EECFBA, #C5DDE8);
-            margin-bottom: 10px;
-        }
-        .border_comment {
-            border: 2px solid yellow;
-            width: 1000px;
-            border-radius: 10px;
-            background: pink; word-break: break-all;
-            padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
-        }
-        .border_reply {
-            border: 2px solid deeppink; width: 1000px; border-radius: 10px; background: lightyellow; word-break: break-all;
-            padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
-        }
+
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
           crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -30,7 +17,7 @@
 
 <html>
 <head>
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Guest Book</title>
     <style>
         body {
@@ -68,7 +55,7 @@
     </style>
 </head>
 <body>
-<form method="post">
+<form method="post" id="reply_form" action="">
     <a href="logout.php" class="my-button">
         <center>Log out</center>
     </a>
@@ -78,10 +65,12 @@
                 <textarea rows="4" required cols="45" name="comments" placeholder="Write you comment.."
                           style="resize: none;"></textarea>
         </label><br>
-        <input type="submit" value="Submit" name="submitbtn">
+        <input type="submit"  name="submitbtn" id="button_reply">
         <input type="reset" value="Reset"><br>
 
     </center>
 </form>
+<div id="replyresult_form"></div>
+<script src="ajaxReply"></script>
 </body>
 </html>

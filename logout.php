@@ -2,6 +2,6 @@
 session_start();
 session_destroy();
 $_SESSION = array();
-header("Location: http://gestbook/login.php");
+header("Location: http://gestbook/loginHtml.php");
 
 

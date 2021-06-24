@@ -1,0 +1,26 @@
+.accordion-item {
+    background: linear-gradient(50deg, #EECFBA, #C5DDE8);
+    margin-bottom: 10px;
+}
+.border_comment {
+    border: 2px solid yellow;
+    width: 1000px;
+    border-radius: 10px;
+    background: pink; word-break: break-all;
+    padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
+}
+.border_reply {
+    border: 2px solid deeppink; width: 1000px; border-radius: 10px; background: lightyellow; word-break: break-all;
+    padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px
+}
+
+.buttonMain{
+    background-color: deeppink;
+    color: white;
+    padding: 2px 8px;
+    margin: 18px 10px;
+    border: 1px solid #ccc;
+    width: 100px;
+    margin-bottom: 0px;
+    text-decoration: none;
+}

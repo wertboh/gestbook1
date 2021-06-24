@@ -1,0 +1,32 @@
+$(document).ready(function () {
+    $("form").submit(
+        function () {
+            registerAjax("registerresult_form", "register_form", "ajaxRegister.php");
+            return false;
+
+        });
+});
+
+function registerAjax(registerresult_form, register_form, url) {
+    $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "html",
+            data: $("#" + register_form).serialize(),
+            success: function (response) {
+                response = JSON.parse(response)
+
+                if (response) {
+                    document.location.replace("http://gestbook/loginHtml.php");
+                } else alert("Please fill in required fields");
+            },
+            error: function (response) {
+                alert("error");
+                $("#loginresult_form").html("Ошибка. Данные не отправлены.");
+            }
+        }
+    );
+
+}
+
+

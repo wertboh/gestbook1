@@ -1,12 +1,10 @@
 <?php
 session_start();
 if (!$_SESSION['auth']) {
-    header('Location: login.php');
+    header('Location: loginHtml.php');
     die();
 } else {
-    if (!empty($_POST['comments'])) {
-        header("Location: http://gestbook/reply.php");
-    } elseif (!empty($_GET['reply'])) {
+    if (!empty($_POST['comments']) || !empty($_GET['reply'])) {
         header("Location: http://gestbook/reply.php");
     }
     include 'html.php';
@@ -35,43 +33,31 @@ if (!$_SESSION['auth']) {
 
     function button($db, $information_about_user, $date, $nameButtom, $indent)
     {
-        echo '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $nameButtom . '" aria-expanded="false" aria-controls="collapseTwo"
-style="background-color: deeppink;
-                color: white;
-                padding: 2px 8px;
-                margin: 18px 10px;
-                border: 1px solid #ccc;
-                width: 100px;
-                margin-bottom: 0px;
-                margin-left:' . $indent . 'px; 
-                text-decoration: none;" name="reply">
+        echo '<button class="buttonMain" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $nameButtom . '" aria-expanded="false" aria-controls="collapseTwo"
+style="margin-left:' . $indent . 'px;" name="reply">
             Reply</button>';
         echo '<div id="collapse' . $nameButtom . '" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion1">
       <div class="accordion-body">
-      <form action="" method="get"><textarea rows="4" required cols="45" name="reply" placeholder="Write you comment.."
-                          style="resize: none;"></textarea><br>';
+      <form action="" method="get"><textarea rows="4" required cols="45" name="reply" placeholder="Write you comment.." style="margin-left:' . $indent .
+            '"></textarea><br>';
 
-        echo '<input type="Submit" value="Submit" name="' . $nameButtom . '">
+        echo '<input type="Submit" value="Submit" name="' . $nameButtom . '" style="margin-left:' . $indent . '">
 <input type="reset" value="Reset" name="' . $nameButtom . '"></form>';
         echo '</div>
     </div>';
         echo '</div></div>';
 
-        echo $nameButtom;
-        if (isset($_GET[$nameButtom])) {
 
-            $statement1 = $db->prepare('INSERT INTO comment (comments, date, firstname,lastname, id_maternal, amount_child)VALUE(:comments, :date, :firstname, :lastname, :id_maternal, 0)');
+        if (isset($_GET[$nameButtom])) {
+            $statement1 = $db->prepare('INSERT INTO comment (comments, date, firstname,lastname, id_maternal)VALUE(:comments, :date, :firstname, :lastname, :id_maternal)');
             $statement1->bindParam(':comments', $_GET['reply']);
             $statement1->bindParam(':date', $date);
             $statement1->bindParam(':firstname', $information_about_user[0]['firstname']);
             $statement1->bindParam(':lastname', $information_about_user[0]['lastname']);
             $statement1->bindParam(':id_maternal', $nameButtom);
             $statement1->execute();
-
-//            $stmnt = $db->prepare('UPDATE comment SET amount_child = amount_child + 1  WHERE id_comment = :id_comment');
-//            $stmnt->bindParam(':id_comment', $nameButtom);
-//            $stmnt->execute();
         }
+
     }
 
     function replies($db, $information_about_user, $date, $nameButtom, $comment, $indent)
@@ -93,13 +79,7 @@ padding-left:20px; padding-top:5px; padding-right:35px; padding-bottom:10px; ">'
     $indent = 10;
 
     foreach ($getChildren as $GETchildren) {
-            $stmt = $db->prepare('SELECT * FROM comment WHERE :id_comment = id_maternal');
-            $stmt->bindParam(':id_comment', $GETchildren['id_comment']);
-            $stmt->execute();
-            $amount_child = $stmt->rowCount();
-            if ($amount_child > 0) {
-                replies($db, $information_about_user, $date, 0, $GETchildren, $indent);
-            }
-        }
+        replies($db, $information_about_user, $date, 0, $GETchildren, $indent);
+    }
 
 }
